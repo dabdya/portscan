@@ -36,7 +36,7 @@ class ConnectedTCPScanner(IScanner):
         super().__init__(ip, timeout, packs_id, packs)
 
     def _process_proto(self, proto, port):
-        """Return TCP port time proto"""
+        """Must return tuple (TCP, port, time, proto)"""
         with socket.socket(
                 socket.AF_INET, socket.SOCK_STREAM) as sock:
             try:
@@ -68,7 +68,7 @@ class UDPScanner(IScanner):
         super().__init__(ip, timeout, packs_id, packs)
 
     def _process_proto(self, proto, port):
-        """Return UDP port time proto"""
+        """Must return tuple (UDP, port, time, proto)"""
         with socket.socket(
                 socket.AF_INET, socket.SOCK_DGRAM) as sock:
             try:
